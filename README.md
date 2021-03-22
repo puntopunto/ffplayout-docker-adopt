@@ -1,3 +1,9 @@
+###### *DISCLAIMER*
+
+    Forked from orginal repo for research and local/home adoptation
+    Staying clear, staying upstream
+    Every finded/fixed bug and added really helpful future will be issued/fixed and pull-requested to upstream repo
+
 # ffplayout-docker
 
 Complete playout solution with [engine](https://github.com/ffplayout/ffplayout-engine), [API](https://github.com/ffplayout/ffplayout-api), [Web GUI](https://github.com/ffplayout/ffplayout-frontend) and [srs rtmp/hls server](https://github.com/ossrs/srs).
