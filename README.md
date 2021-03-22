@@ -1,9 +1,9 @@
 ###### *DISCLAIMER*
 
-    Forked from orginal repo for research and local/home adoptation
-    Staying clear, staying upstream
+    Forked from orginal repo for research and local/home adopt.
+    Staying clear, staying upstream.
     Every finded/fixed bug and/or added really helpful feature
-    will be issued/fixed and pull-requested to upstream repo
+    will be issued/fixed and pull-requested to upstream repo.
 
 # ffplayout-docker
 
