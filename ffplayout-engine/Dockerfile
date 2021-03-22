@@ -13,35 +13,35 @@ RUN cd /opt && \
     mkdir /etc/ffplayout
 
 # install build tools, ffmpeg dependencies and compile ffmpeg
-# RUN apk update && \
-#     apk add --no-cache build-base gcc libtool gperf nasm yasm linux-headers tzdata openssl-dev && \
-#     apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \
-#         expat-dev zlib-dev fontconfig-dev libxml2-dev lame-dev \
-#         libpng-dev fribidi-dev zeromq-dev freetype-dev opus-dev && \
-#     apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
-#         gnu-libiconv fdk-aac-dev libass-dev libvpx-dev libsrt-dev x264-dev x265-dev && \
-#     # psutil needs gcc
-#     pip install --no-cache-dir psutil && \
-#     cd /opt && \
-#     wget "https://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2" && \
-#     tar xfvj ffmpeg-snapshot.tar.bz2 && \
-#     rm ffmpeg-snapshot.tar.bz2 && \
-#     cd ffmpeg && \
-#     ./configure --prefix='/usr/local/' --enable-pthreads --extra-libs=-lpthread \
-#     --disable-debug --disable-doc --enable-gpl --enable-version3 \
-#     --enable-nonfree --enable-runtime-cpudetect --enable-fontconfig \
-#     --enable-openssl --enable-libass --enable-libfdk-aac --enable-libfreetype \
-#     --enable-libfribidi --enable-libmp3lame --enable-libopus --enable-libvpx \
-#     --enable-libsrt --enable-libx264 --enable-libx265 --enable-libzmq && \
-#     make -j $(nproc | awk '{print $1 / 2}') && \
-#     make install && \
-#     cd .. && \
-#     rm -rf ffmpeg && \
-#     # cleanup
-#     apk del build-base gcc libtool gperf nasm yasm
+RUN apk update && \
+    apk add --no-cache build-base gcc libtool gperf nasm yasm linux-headers tzdata openssl-dev && \
+    apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \
+        expat-dev zlib-dev fontconfig-dev libxml2-dev lame-dev \
+        libpng-dev fribidi-dev zeromq-dev freetype-dev opus-dev && \
+    apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
+        gnu-libiconv fdk-aac-dev libass-dev libvpx-dev libsrt-dev x264-dev x265-dev && \
+    # psutil needs gcc
+    pip install --no-cache-dir psutil && \
+    cd /opt && \
+    wget "https://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2" && \
+    tar xfvj ffmpeg-snapshot.tar.bz2 && \
+    rm ffmpeg-snapshot.tar.bz2 && \
+    cd ffmpeg && \
+    ./configure --prefix='/usr/local/' --enable-pthreads --extra-libs=-lpthread \
+    --disable-debug --disable-doc --enable-gpl --enable-version3 \
+    --enable-nonfree --enable-runtime-cpudetect --enable-fontconfig \
+    --enable-openssl --enable-libass --enable-libfdk-aac --enable-libfreetype \
+    --enable-libfribidi --enable-libmp3lame --enable-libopus --enable-libvpx \
+    --enable-libsrt --enable-libx264 --enable-libx265 --enable-libzmq && \
+    make -j $(nproc | awk '{print $1 / 2}') && \
+    make install && \
+    cd .. && \
+    rm -rf ffmpeg && \
+    # cleanup
+    apk del build-base gcc libtool gperf nasm yasm
 
 # install ffmpeg
-RUN apk add --no-cache ffmpeg
+# RUN apk add --no-cache ffmpeg
 
 COPY assets/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY assets/socket-server.py /usr/local/bin/socket-server.py
